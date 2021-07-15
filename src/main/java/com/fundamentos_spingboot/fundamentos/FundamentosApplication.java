@@ -1,5 +1,6 @@
 package com.fundamentos_spingboot.fundamentos;
 
+import com.fundamentos_spingboot.fundamentos.bean.BeanWpropiedades;
 import com.fundamentos_spingboot.fundamentos.bean.MyBean;
 import com.fundamentos_spingboot.fundamentos.component.ComponetDependency;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,10 +11,12 @@ import org.springframework.boot.CommandLineRunner;
 public class FundamentosApplication implements CommandLineRunner{
         private final ComponetDependency componetDependency;
         private MyBean myBean;
+        private BeanWpropiedades beanWpropiedades;
        
-        public FundamentosApplication(@Qualifier("componente2")ComponetDependency componetDependency, MyBean myBean){
+        public FundamentosApplication(@Qualifier("componente2")ComponetDependency componetDependency,BeanWpropiedades beanWpropiedades, MyBean myBean){
             this.componetDependency = componetDependency;
             this.myBean = myBean;
+            this.beanWpropiedades=beanWpropiedades;
         }
         
 	public static void main(String[] args) {
@@ -23,6 +26,7 @@ public class FundamentosApplication implements CommandLineRunner{
     @Override
     public void run(String... args){
         componetDependency.saludar();
+        System.out.println(beanWpropiedades.funcion());
         myBean.print();
     }
         
