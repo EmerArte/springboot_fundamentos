@@ -13,7 +13,7 @@ public class BeanWproImplement implements BeanWpropiedades{
     private String nombre, apellido, random;
     public BeanWproImplement(String nombre, String apellido,String random){
         this.nombre=nombre;
-        this.apellido=nombre;
+        this.apellido=apellido;
         this.random=random;
     }
     @Override

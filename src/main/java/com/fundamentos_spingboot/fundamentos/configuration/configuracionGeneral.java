@@ -7,7 +7,9 @@ package com.fundamentos_spingboot.fundamentos.configuration;
 
 import com.fundamentos_spingboot.fundamentos.bean.BeanWproImplement;
 import com.fundamentos_spingboot.fundamentos.bean.BeanWpropiedades;
+import javax.activation.DataSource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,5 +30,15 @@ public class configuracionGeneral {
     @Bean
     public BeanWpropiedades function(){
         return new BeanWproImplement(nombre,apellido,random);
+    }
+    
+    @Bean
+    public DataSource dataSource(){
+        DataSourceBuilder build = DataSourceBuilder.create();
+        build.driverClassName("org.h2.Driver");
+        build.url("jbdc:h2:mem:testdb");
+        build.username("sa");
+        build.password("");
+        return (DataSource) build.build();
     }
 }
